@@ -1,8 +1,18 @@
 <footer class="footer">
     <div class="container footer__grid">
         <div>
+            @if (request()->routeIs('home'))
+                <a class="footer__brand home-footer__brand" href="{{ route('home') }}">
+                    <img src="{{ asset('images/logobarkalin.png') }}" alt="">
+                    <span>{{ config('barkalin.name') }}</span>
+                </a>
+            @else
             <p class="footer__brand">{{ config('barkalin.name') }}</p>
+            @endif
             <p class="footer__muted">Kegiatan usaha di bidang pertambangan dan energi{{ config('barkalin.founded') ? ', didirikan pada ' . config('barkalin.founded') : '' }}.</p>
+            @if (request()->routeIs('home'))
+                <a href="{{ route('contact') }}" class="btn btn--gold home-footer__contact">Hubungi Kami</a>
+            @endif
         </div>
         <nav aria-label="Navigasi footer">
             <h2 class="footer__title">Navigasi</h2>
@@ -37,5 +47,11 @@
             @endif
         </address>
     </div>
-    <div class="container footer__bottom">© {{ date('Y') }} {{ config('barkalin.name') }}. Hak cipta dilindungi.</div>
+    <div class="container footer__bottom">
+        @if (request()->routeIs('home'))
+            © 2026 CV. Barkalin Artha Prima. All rights reserved.
+        @else
+            © {{ date('Y') }} {{ config('barkalin.name') }}. Hak cipta dilindungi.
+        @endif
+    </div>
 </footer>
