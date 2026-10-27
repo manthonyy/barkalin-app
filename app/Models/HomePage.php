@@ -2,11 +2,8 @@
 
 namespace App\Models;
 
-final class HomePage
+class HomePage
 {
-    /**
-     * @return list<array{title: string, category: string, image: string, description: string}>
-     */
     public function coalGrades(): array
     {
         return [
@@ -31,9 +28,6 @@ final class HomePage
         ];
     }
 
-    /**
-     * @return list<array{number: string, title: string, image: string, image_alt: string, reverse: bool, paragraphs: list<string>}>
-     */
     public function activities(): array
     {
         return [
