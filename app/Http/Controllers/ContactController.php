@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ContactMessage;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -24,9 +25,10 @@ class ContactController extends Controller
             'message' => ['required', 'string', 'max:5000'],
         ]);
 
+        ContactMessage::create($validated);
+
         return redirect()
             ->route('contact')
-            ->with('success', 'Terima kasih! Pesan kamu berhasil divalidasi.')
-            ->withInput();
+            ->with('success', 'Terima kasih! Pesan dan penawaran Anda telah berhasil dikirim. Tim Barkalin akan segera menghubungi Anda.');
     }
 }

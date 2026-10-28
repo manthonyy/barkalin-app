@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\View\View;
 
 class BusinessController extends Controller
 {
     public function __invoke(): View
     {
-        return view('business');
+        $products = Product::where('active', true)->get();
+
+        return view('business', [
+            'products' => $products,
+        ]);
     }
 }
