@@ -7,8 +7,7 @@
 <header class="navbar" data-navbar>
     <div class="container navbar__inner">
         <a href="{{ route('home') }}" class="brand" aria-label="{{ config('barkalin.name') }} – Beranda">
-            <img class="brand__logo" src="{{ asset('images/logobarkalin.png') }}" alt="">
-            <span class="brand__text">BARKALIN<small>ARTHA PRIMA</small></span>
+            <img class="brand__logo" src="{{ asset('images/barkalin-logo.png') }}" alt="{{ config('barkalin.name') }}">
         </a>
         <button class="navbar__toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
             <span class="sr-only">Buka menu navigasi</span><span class="bars" aria-hidden="true"></span>

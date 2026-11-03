@@ -175,8 +175,8 @@ p {
 }
 
 .brand__logo {
-    width: 48px;
-    height: 44px;
+    width: 190px;
+    height: auto;
     object-fit: contain;
 }
 
@@ -1281,8 +1281,8 @@ p {
 }
 
 .home-footer__brand img {
-    width: 48px;
-    height: 42px;
+    width: min(260px, 100%);
+    height: auto;
     object-fit: contain;
 }
 
@@ -2077,8 +2077,8 @@ h2 {
     }
 
     .brand__logo {
-        width: 42px;
-        height: 40px;
+        width: min(170px, 48vw);
+        height: auto;
     }
 
     .home-page .hero {

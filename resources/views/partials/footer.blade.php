@@ -2,8 +2,7 @@
     <div class="container footer__grid">
         <div>
             <a class="footer__brand home-footer__brand" href="{{ route('home') }}">
-                <img src="{{ asset('images/logobarkalin.png') }}" alt="">
-                <span>{{ config('barkalin.name') }}</span>
+                <img src="{{ asset('images/barkalin-logo.png') }}" alt="{{ config('barkalin.name') }}">
             </a>
             <p class="footer__muted">Kegiatan usaha di bidang pertambangan dan energi{{ config('barkalin.founded') ? ', didirikan pada ' . config('barkalin.founded') : '' }}.</p>
             <a href="{{ route('contact') }}" class="btn btn--gold home-footer__contact">Hubungi Kami <span aria-hidden="true">→</span></a>

@@ -5,19 +5,6 @@
 @section('body_class', 'home-page')
 
 @section('content')
-<<<<<<< Updated upstream
-<section class="hero home-hero">
-    <div class="container hero__content">
-        <span class="eyebrow">ENERGY · MINING · COMMODITIES</span>
-        <h1>Solusi Terpercaya untuk Masa Depan Energi</h1>
-        <p>
-            CV Barkalin Artha Prima berkomitmen untuk menghadirkan solusi di bidang pertambangan dan energi
-            dengan mengutamakan profesionalisme, kualitas, dan kemitraan jangka panjang.
-        </p>
-        <div class="hero__actions">
-            <a href="{{ route('operations') }}" class="btn btn--gold">Jelajahi Operasional Kami</a>
-            <a href="{{ route('about') }}" class="btn btn--outline">Tentang Kami</a>
-=======
 <section
     class="hero home-hero"
     style="--hero-background-image: url('{{ asset('images/barkalin-hero1.jpg') }}')"
@@ -43,7 +30,6 @@
                 CV Barkalin Artha Prima merupakan perusahaan yang bergerak di bidang pertambangan dan energi,
                 berkomitmen menghadirkan solusi yang mendukung kebutuhan industri.
             </p>
->>>>>>> Stashed changes
         </div>
     </div>
 </section>
@@ -96,20 +82,12 @@
                     class="home-image-card"
                     type="button"
                     data-detail-card
-<<<<<<< Updated upstream
                     data-title="{{ $grade->name }}"
                     data-category="{{ $grade->category }}"
                     data-image="{{ asset('images/' . $grade->image) }}"
-                    data-grade-details="{{ json_encode($details) }}"
+                    data-grade-details="{{ json_encode($details, JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_TAG | JSON_HEX_AMP) }}"
                     aria-label="Lihat detail {{ $grade->name }}"
-=======
-                    data-title="{{ $grade['title'] }}"
-                    data-category="{{ $grade['category'] }}"
-                    data-image="{{ asset('images/' . $grade['image']) }}"
-                    data-grade-details="{{ json_encode($grade['details'], JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_TAG | JSON_HEX_AMP) }}"
-                    aria-label="Lihat detail {{ $grade['title'] }}"
                     data-reveal
->>>>>>> Stashed changes
                 >
                     <img src="{{ asset('images/' . $grade->image) }}" alt="{{ $grade->name }}" loading="lazy">
                     <span class="home-image-card__overlay">
@@ -135,11 +113,7 @@
         </div>
         <div class="home-activities__list">
             @foreach ($activities as $activity)
-<<<<<<< Updated upstream
-                <article class="home-activity{{ $activity->reverse ? ' home-activity--reverse' : '' }}">
-=======
-                <article class="home-activity{{ $activity['reverse'] ? ' home-activity--reverse' : '' }}" data-reveal>
->>>>>>> Stashed changes
+                <article class="home-activity{{ $activity->reverse ? ' home-activity--reverse' : '' }}" data-reveal>
                     <img
                         src="{{ asset('images/' . $activity->image) }}"
                         alt="{{ $activity->title }}"
@@ -188,18 +162,11 @@
             <p>Dipercaya oleh mitra dari beragam sektor industri.</p>
         </div>
         <div class="home-client-list" aria-label="Logo klien">
-<<<<<<< Updated upstream
             @foreach ($clientPartners as $client)
-                <div class="home-client-logo" title="{{ $client->name }}{{ $client->industry ? ' - ' . $client->industry : '' }}">
+                <div class="home-client-logo" title="{{ $client->name }}{{ $client->industry ? ' - ' . $client->industry : '' }}" data-reveal>
                     <img src="{{ asset('images/' . $client->logo) }}" alt="{{ $client->name }}" loading="lazy">
                 </div>
             @endforeach
-=======
-            <div class="home-client-logo" data-reveal><img src="{{ asset('images/cheiljedang.png') }}" alt="CheilJedang" loading="lazy"></div>
-            <div class="home-client-logo" data-reveal><img src="{{ asset('images/wings.png') }}" alt="Wings" loading="lazy"></div>
-            <div class="home-client-logo" data-reveal><img src="{{ asset('images/sementonas.png') }}" alt="Semen Tonasa" loading="lazy"></div>
-            <div class="home-client-logo" data-reveal><img src="{{ asset('images/megasurya.jpg') }}" alt="Megasurya" loading="lazy"></div>
->>>>>>> Stashed changes
         </div>
     </div>
 </section>
