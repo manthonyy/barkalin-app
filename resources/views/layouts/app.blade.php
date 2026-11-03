@@ -10,8 +10,7 @@
     <meta property="og:description" content="@yield('description', 'CV Barkalin Artha Prima, perusahaan pertambangan dan energi.')">
     <meta property="og:image" content="{{ asset(config('barkalin.images.hero')) }}">
     <meta property="og:url" content="{{ url()->current() }}">
-    {{-- TODO: replace with the company logo (public/favicon.svg). Placeholder: letter B. --}}
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23181a1b'/%3E%3Ctext x='16' y='23' font-size='20' font-family='Arial' font-weight='700' text-anchor='middle' fill='%23c0803a'%3EB%3C/text%3E%3C/svg%3E">
+    <link rel="icon" type="image/png" href="{{ asset('images/logobarkalin.png') }}">
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=manrope:400,500,600,700,800" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])

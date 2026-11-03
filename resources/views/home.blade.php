@@ -5,6 +5,7 @@
 @section('body_class', 'home-page')
 
 @section('content')
+<<<<<<< Updated upstream
 <section class="hero home-hero">
     <div class="container hero__content">
         <span class="eyebrow">ENERGY · MINING · COMMODITIES</span>
@@ -16,13 +17,40 @@
         <div class="hero__actions">
             <a href="{{ route('operations') }}" class="btn btn--gold">Jelajahi Operasional Kami</a>
             <a href="{{ route('about') }}" class="btn btn--outline">Tentang Kami</a>
+=======
+<section
+    class="hero home-hero"
+    style="--hero-background-image: url('{{ asset('images/barkalin-hero1.jpg') }}')"
+>
+    <div class="container hero__content home-hero__content">
+        <h1 data-reveal>Bergerak Bersama Membangun Energi untuk Masa Depan.</h1>
+        <div class="home-hero__lower">
+            <dl class="home-hero__stats" aria-label="Informasi perusahaan">
+                <div data-reveal>
+                    <dt>2011</dt>
+                    <dd>Tahun berdiri</dd>
+                </div>
+                <div data-reveal>
+                    <dt>3</dt>
+                    <dd>Kegiatan utama</dd>
+                </div>
+                <div data-reveal>
+                    <dt>Surabaya</dt>
+                    <dd>Kantor pusat</dd>
+                </div>
+            </dl>
+            <p data-reveal>
+                CV Barkalin Artha Prima merupakan perusahaan yang bergerak di bidang pertambangan dan energi,
+                berkomitmen menghadirkan solusi yang mendukung kebutuhan industri.
+            </p>
+>>>>>>> Stashed changes
         </div>
     </div>
 </section>
 
-<section class="section home-about">
+<section class="section home-about" id="tentang-kami">
     <div class="container home-about__grid">
-        <div class="home-about__content">
+        <div class="home-about__content" data-reveal>
             <span class="eyebrow">TENTANG KAMI</span>
             <h2>Mitra untuk masa depan energi yang bertanggung jawab.</h2>
             <p>
@@ -32,22 +60,28 @@
                 mendirikan CV Barkalin Artha Prima, sebuah kegiatan usaha yang bergerak khusus di bidang
                 pertambangan dan energy.
             </p>
-            <a href="{{ route('about') }}" class="text-link">Selengkapnya tentang kami <span aria-hidden="true">→</span></a>
+            <a href="{{ route('about') }}" class="btn btn--accent home-about__link">
+                Tentang Kami Selengkapnya <span aria-hidden="true">→</span>
+            </a>
         </div>
-        <img
-            class="home-about__image"
-            src="{{ asset('images/barkalin-hero.jpg') }}"
-            alt="Alat berat bekerja di area pertambangan"
-            loading="lazy"
-        >
+        <figure class="home-about__visual" data-reveal>
+            <img
+                class="home-about__image"
+                src="{{ asset('images/barkalin-hero.jpg') }}"
+                alt="Truk tambang bekerja di area pertambangan"
+                loading="eager"
+            >
+            <figcaption><span>01</span> Mendukung rantai pasok energi Indonesia</figcaption>
+        </figure>
     </div>
 </section>
 
 <section class="section home-grades">
     <div class="container">
-        <div class="home-section-heading">
+        <div class="home-section-heading" data-reveal>
             <span class="eyebrow">GRADE BATU BARA</span>
             <h2>Tersedia dalam Berbagai Grade Sesuai Kebutuhan Industri</h2>
+            <p>Kenali kategori produk kami dan temukan informasi yang sesuai dengan kebutuhan operasional Anda.</p>
         </div>
         <div class="home-grade-grid">
             @foreach ($coalGrades as $grade)
@@ -62,11 +96,20 @@
                     class="home-image-card"
                     type="button"
                     data-detail-card
+<<<<<<< Updated upstream
                     data-title="{{ $grade->name }}"
                     data-category="{{ $grade->category }}"
                     data-image="{{ asset('images/' . $grade->image) }}"
                     data-grade-details="{{ json_encode($details) }}"
                     aria-label="Lihat detail {{ $grade->name }}"
+=======
+                    data-title="{{ $grade['title'] }}"
+                    data-category="{{ $grade['category'] }}"
+                    data-image="{{ asset('images/' . $grade['image']) }}"
+                    data-grade-details="{{ json_encode($grade['details'], JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_TAG | JSON_HEX_AMP) }}"
+                    aria-label="Lihat detail {{ $grade['title'] }}"
+                    data-reveal
+>>>>>>> Stashed changes
                 >
                     <img src="{{ asset('images/' . $grade->image) }}" alt="{{ $grade->name }}" loading="lazy">
                     <span class="home-image-card__overlay">
@@ -81,7 +124,7 @@
 
 <section class="section home-services">
     <div class="container">
-        <div class="home-section-heading home-activities__intro">
+        <div class="home-section-heading home-activities__intro" data-reveal>
             <span class="eyebrow">KEGIATAN KAMI</span>
             <h2>Proses yang Mendukung Kualitas dan Keandalan</h2>
             <p>
@@ -92,7 +135,11 @@
         </div>
         <div class="home-activities__list">
             @foreach ($activities as $activity)
+<<<<<<< Updated upstream
                 <article class="home-activity{{ $activity->reverse ? ' home-activity--reverse' : '' }}">
+=======
+                <article class="home-activity{{ $activity['reverse'] ? ' home-activity--reverse' : '' }}" data-reveal>
+>>>>>>> Stashed changes
                     <img
                         src="{{ asset('images/' . $activity->image) }}"
                         alt="{{ $activity->title }}"
@@ -135,16 +182,24 @@
 
 <section class="section home-clients">
     <div class="container">
-        <div class="home-section-heading">
+        <div class="home-section-heading" data-reveal>
             <span class="eyebrow">OUR CLIENTS</span>
             <h2>Trusted by Leading Companies</h2>
+            <p>Dipercaya oleh mitra dari beragam sektor industri.</p>
         </div>
         <div class="home-client-list" aria-label="Logo klien">
+<<<<<<< Updated upstream
             @foreach ($clientPartners as $client)
                 <div class="home-client-logo" title="{{ $client->name }}{{ $client->industry ? ' - ' . $client->industry : '' }}">
                     <img src="{{ asset('images/' . $client->logo) }}" alt="{{ $client->name }}" loading="lazy">
                 </div>
             @endforeach
+=======
+            <div class="home-client-logo" data-reveal><img src="{{ asset('images/cheiljedang.png') }}" alt="CheilJedang" loading="lazy"></div>
+            <div class="home-client-logo" data-reveal><img src="{{ asset('images/wings.png') }}" alt="Wings" loading="lazy"></div>
+            <div class="home-client-logo" data-reveal><img src="{{ asset('images/sementonas.png') }}" alt="Semen Tonasa" loading="lazy"></div>
+            <div class="home-client-logo" data-reveal><img src="{{ asset('images/megasurya.jpg') }}" alt="Megasurya" loading="lazy"></div>
+>>>>>>> Stashed changes
         </div>
     </div>
 </section>
