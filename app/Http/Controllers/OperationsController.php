@@ -3,18 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Facility;
-use App\Models\HomePage;
 use Illuminate\View\View;
 
 class OperationsController extends Controller
 {
-    public function __invoke(HomePage $homePage): View
+    public function __invoke(): View
     {
-        $facilities = Facility::where('active', true)->get();
+        $facilities = Facility::where('active', true)->orderBy('number')->get();
 
         return view('operations', [
             'facilities' => $facilities,
-            'activities' => $homePage->activities(),
         ]);
     }
 }

@@ -14,7 +14,7 @@
             dengan mengutamakan profesionalisme, kualitas, dan kemitraan jangka panjang.
         </p>
         <div class="hero__actions">
-            <a href="{{ route('business') }}" class="btn btn--gold">Jelajahi Bisnis Kami</a>
+            <a href="{{ route('operations') }}" class="btn btn--gold">Jelajahi Operasional Kami</a>
             <a href="{{ route('about') }}" class="btn btn--outline">Tentang Kami</a>
         </div>
     </div>
@@ -51,19 +51,26 @@
         </div>
         <div class="home-grade-grid">
             @foreach ($coalGrades as $grade)
+                @php
+                    $details = [
+                        'subtitle' => $grade->subtitle,
+                        'calorific_value' => $grade->calorific_value,
+                        'description' => $grade->description,
+                    ];
+                @endphp
                 <button
                     class="home-image-card"
                     type="button"
                     data-detail-card
-                    data-title="{{ $grade['title'] }}"
-                    data-category="{{ $grade['category'] }}"
-                    data-image="{{ asset('images/' . $grade['image']) }}"
-                    data-description="{{ $grade['description'] }}"
-                    aria-label="Lihat detail {{ $grade['title'] }}"
+                    data-title="{{ $grade->name }}"
+                    data-category="{{ $grade->category }}"
+                    data-image="{{ asset('images/' . $grade->image) }}"
+                    data-grade-details="{{ json_encode($details) }}"
+                    aria-label="Lihat detail {{ $grade->name }}"
                 >
-                    <img src="{{ asset('images/' . $grade['image']) }}" alt="" loading="lazy">
+                    <img src="{{ asset('images/' . $grade->image) }}" alt="{{ $grade->name }}" loading="lazy">
                     <span class="home-image-card__overlay">
-                        <span class="home-image-card__title">{{ $grade['title'] }}</span>
+                        <span class="home-image-card__title">{{ $grade->name }}</span>
                         <span class="home-image-card__action">Lihat Selengkapnya <span aria-hidden="true">→</span></span>
                     </span>
                 </button>
@@ -85,18 +92,16 @@
         </div>
         <div class="home-activities__list">
             @foreach ($activities as $activity)
-                <article class="home-activity{{ $activity['reverse'] ? ' home-activity--reverse' : '' }}">
+                <article class="home-activity{{ $activity->reverse ? ' home-activity--reverse' : '' }}">
                     <img
-                        src="{{ asset('images/' . $activity['image']) }}"
-                        alt="{{ $activity['image_alt'] }}"
+                        src="{{ asset('images/' . $activity->image) }}"
+                        alt="{{ $activity->title }}"
                         loading="lazy"
                     >
                     <div class="home-activity__content">
-                        <span class="home-activity__number">{{ $activity['number'] }}</span>
-                        <h3>{{ $activity['title'] }}</h3>
-                        @foreach ($activity['paragraphs'] as $paragraph)
-                            <p>{{ $paragraph }}</p>
-                        @endforeach
+                        <span class="home-activity__number">{{ $activity->number }}</span>
+                        <h3>{{ $activity->title }}</h3>
+                        <p style="white-space: pre-line;">{{ $activity->description }}</p>
                     </div>
                 </article>
             @endforeach
@@ -123,7 +128,7 @@
         <div class="home-detail-modal__content">
             <span class="eyebrow" data-modal-category></span>
             <h2 id="home-detail-title" data-modal-title></h2>
-            <p id="home-detail-description" data-modal-description></p>
+            <div id="home-detail-description" data-modal-description></div>
         </div>
     </section>
 </div>
@@ -135,10 +140,11 @@
             <h2>Trusted by Leading Companies</h2>
         </div>
         <div class="home-client-list" aria-label="Logo klien">
-            <div class="home-client-logo"><img src="{{ asset('images/cheiljedang.png') }}" alt="CheilJedang" loading="lazy"></div>
-            <div class="home-client-logo"><img src="{{ asset('images/wings.png') }}" alt="Wings" loading="lazy"></div>
-            <div class="home-client-logo"><img src="{{ asset('images/sementonas.png') }}" alt="Semen Tonasa" loading="lazy"></div>
-            <div class="home-client-logo"><img src="{{ asset('images/megasurya.jpg') }}" alt="Megasurya" loading="lazy"></div>
+            @foreach ($clientPartners as $client)
+                <div class="home-client-logo" title="{{ $client->name }}{{ $client->industry ? ' - ' . $client->industry : '' }}">
+                    <img src="{{ asset('images/' . $client->logo) }}" alt="{{ $client->name }}" loading="lazy">
+                </div>
+            @endforeach
         </div>
     </div>
 </section>

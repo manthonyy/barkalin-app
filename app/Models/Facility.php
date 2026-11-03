@@ -11,14 +11,16 @@ class Facility extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'type',
-        'location',
+        'number',
+        'title',
+        'image',
+        'reverse',
         'description',
         'active',
     ];
 
     protected $casts = [
+        'reverse' => 'boolean',
         'active' => 'boolean',
     ];
 }

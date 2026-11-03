@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('facilities', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('type'); // Stockpile, Maritim / Pengapalan, Dermaga / Jetty
-            $table->string('location');
+            $table->string('number', 10);
+            $table->string('title');
+            $table->string('image');
+            $table->boolean('reverse')->default(false);
             $table->text('description');
             $table->boolean('active')->default(true);
             $table->timestamps();

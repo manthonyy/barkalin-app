@@ -12,32 +12,31 @@ class FacilitySeeder extends Seeder
      */
     public function run(): void
     {
-        // Data riil operasional CV Barkalin Artha Prima
         Facility::create([
-            'name' => 'Stockpile Osowilangon',
-            'type' => 'Stockpile & Penyimpanan',
-            'location' => 'Jl. Osowilangon No. 7, Surabaya, Jawa Timur',
-            'description' => 'Fasilitas penimbunan dan penyimpanan batubara berkapasitas besar dengan manajemen drainase dan pemantauan kualitas untuk menjaga stabilitas kalori sebelum distribusi darat maupun laut.',
+            'number' => '01',
+            'title' => 'Mining',
+            'image' => 'barkalin-hero1.jpg',
+            'reverse' => false,
+            'description' => "Sumber batu bara CV. Barkalin Artha Prima berasal dari tambang yang mempunyai izin dari pemerintah beserta legalitas-legalitas yang telah memenuhi syarat. Dengan latar belakang pengetahuan dan keahlian logistik, kami menerapkan standar yang tinggi dan ketat dalam menyeleksi kuantitas dan kualitas.\n\nLegalitas sumber menjadi pertimbangan penting dalam rantai pasok. Seleksi sumber dan kesesuaian material, disertai pemeriksaan kuantitas serta kualitas, membantu memastikan kebutuhan mitra dapat dipertimbangkan dengan baik. Koordinasi logistik juga mendukung perencanaan distribusi dari sumber menuju tahap pengiriman.",
             'active' => true,
         ]);
 
         Facility::create([
-            'name' => 'Armada Tongkang (Ponton) & Barge',
-            'type' => 'Logistik Maritim',
-            'location' => 'Rute Perairan Domestik & Selat Madura',
-            'description' => 'Layanan transportasi laut terintegrasi dengan kapal tunda (tugboat) dan tongkang untuk mengangkut batubara dalam volume besar secara tepat waktu dan aman.',
+            'number' => '02',
+            'title' => 'Shipment',
+            'image' => 'Tongkang-Update-1024x446.jpg',
+            'reverse' => true,
+            'description' => "Untuk sarana pemasaran dan pendistribusiannya, batu bara memerlukan alat transportasi laut sebagai alat pengangkutannya. Dalam pengangkutan tertentu, tongkang digunakan untuk membawa material dan kapal tunda membantu menarik atau mendorong tongkang.\n\nTransportasi laut berperan dalam menghubungkan titik pengiriman dan tujuan distribusi. Koordinasi pengangkutan, penyesuaian jadwal, dan penanganan material menjadi bagian penting agar proses pengiriman dapat berjalan tertata. Penggunaan sarana angkut disesuaikan dengan kebutuhan dan pihak-pihak yang terlibat dalam pengiriman.",
             'active' => true,
         ]);
 
         Facility::create([
-            'name' => 'Jetty & Dermaga Muat',
-            'type' => 'Dermaga & Pelabuhan',
-            'location' => 'Area Pesisir Pelabuhan Jawa Timur',
-            'description' => 'Fasilitas dermaga muat dan bongkar logistik batubara yang dilengkapi konveyor dan peralatan mekanik untuk mempercepat proses loading ke kapal tongkang.',
+            'number' => '03',
+            'title' => 'Stockpile',
+            'image' => 'Banner-Update-stocpile-1024x446.jpg',
+            'reverse' => false,
+            'description' => "Stockpile merupakan area yang digunakan untuk menumpuk dan menyimpan batu bara sebelum diproses lebih lanjut atau dikirim kepada pembeli. Pengelolaan stockpile yang baik membantu mendukung penanganan material dan persiapan distribusi.\n\nSecara umum, pengelolaan area penyimpanan meliputi penumpukan dan penanganan material secara teratur. Jika diperlukan, batu bara dapat dipisahkan berdasarkan kategori atau spesifikasi sebelum dipersiapkan untuk pengiriman. Penataan yang baik membantu menjaga kelancaran proses penanganan tanpa mengasumsikan kapasitas maupun fasilitas tertentu.",
             'active' => true,
         ]);
-
-        // Tambahan data tiruan menggunakan Factory (pola materi kelas)
-        Facility::factory()->count(2)->create();
     }
 }

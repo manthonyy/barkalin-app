@@ -31,49 +31,19 @@
 
 <section class="operations-activities">
     <div class="container">
-        @foreach ($activities as $activity)
-            @php
-                $activityImage = $activity['image'];
-            @endphp
-            <article class="operations-activity{{ $activity['reverse'] ? ' operations-activity--reverse' : '' }}" data-reveal>
+        @foreach ($facilities as $facility)
+            <article class="operations-activity{{ $facility->reverse ? ' operations-activity--reverse' : '' }}" data-reveal>
                 <div class="operations-activity__image">
-                    <img src="{{ asset('images/' . $activityImage) }}" alt="{{ $activity['image_alt'] }}" loading="lazy">
-                    <span>{{ $activity['number'] }}</span>
+                    <img src="{{ asset('images/' . $facility->image) }}" alt="{{ $facility->title }}" loading="lazy">
+                    <span>{{ $facility->number }}</span>
                 </div>
                 <div class="operations-activity__content">
-                    <span class="eyebrow">TAHAP {{ $activity['number'] }}</span>
-                    <h2>{{ $activity['title'] }}</h2>
-                    @foreach ($activity['paragraphs'] as $paragraph)
-                        <p>{{ $paragraph }}</p>
-                    @endforeach
+                    <span class="eyebrow">TAHAP {{ $facility->number }}</span>
+                    <h2>{{ $facility->title }}</h2>
+                    <p style="white-space: pre-line;">{{ $facility->description }}</p>
                 </div>
             </article>
         @endforeach
     </div>
 </section>
-
-@if ($facilities->isNotEmpty())
-    <section class="inner-section operations-facilities">
-        <div class="container">
-            <div class="inner-section__heading" data-reveal>
-                <span class="eyebrow">FASILITAS</span>
-                <h2>Lokasi operasional yang terdaftar.</h2>
-            </div>
-            <div class="operations-facility-list">
-                @foreach ($facilities as $facility)
-                    <article data-reveal>
-                        <span>{{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}</span>
-                        <div>
-                            <small>{{ $facility->type }}</small>
-                            <h3>{{ $facility->name }}</h3>
-                            <p>{{ $facility->location }}</p>
-                            <p>{{ $facility->description }}</p>
-                        </div>
-                    </article>
-                @endforeach
-            </div>
-        </div>
-    </section>
-@endif
-
 @endsection

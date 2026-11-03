@@ -5,17 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class CoalGrade extends Model
 {
-    /** @use HasFactory<\Database\Factories\ProductFactory> */
+    /** @use HasFactory<\Database\Factories\CoalGradeFactory> */
     use HasFactory;
 
     protected $fillable = [
         'name',
         'category',
-        'calorie_range',
+        'subtitle',
+        'calorific_value',
         'description',
-        'specifications',
+        'image',
         'active',
     ];
 

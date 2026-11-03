@@ -13,11 +13,11 @@ return [
 
     'stockpile_address' => 'Jl. Osowilangon No. 7, Surabaya, Jawa Timur',
 
-    'phone' => '031 – 354 3991',
+    'phone' => '031 - 354 3991',
 
     'phone_tel' => '+62313543991',
 
-    'fax' => '031 – 357 0524',
+    'fax' => '031 - 357 0524',
 
     'inquiry_to' => env('BARKALIN_INQUIRY_TO', 'coal@barkalin.com'),
 

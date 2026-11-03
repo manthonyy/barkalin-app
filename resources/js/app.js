@@ -144,24 +144,18 @@ if (detailModal instanceof HTMLElement) {
             const details = JSON.parse(card.dataset.gradeDetails ?? '{}');
             const subtitle = document.createElement('h3');
             subtitle.className = 'home-detail-modal__subtitle';
-            subtitle.textContent = details.subtitle;
-
-            const source = document.createElement('p');
-            const sourceLabel = document.createElement('strong');
-            sourceLabel.textContent = 'Sumber lokasi batubara: ';
-            source.append(sourceLabel, details.source);
+            subtitle.textContent = details.subtitle ?? '';
 
             const description = document.createElement('p');
-            description.textContent = details.description;
+            description.textContent = details.description ?? '';
 
             const calorificValue = document.createElement('p');
             const calorificLabel = document.createElement('strong');
             calorificLabel.textContent = 'Nilai kalori: ';
-            calorificValue.append(calorificLabel, details.calorific_value);
+            calorificValue.append(calorificLabel, details.calorific_value ?? '');
 
             modalDescription.replaceChildren(
                 subtitle,
-                source,
                 description,
                 calorificValue,
             );

@@ -9,8 +9,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', HomeController::class)->name('home');
 Route::get('/about', AboutController::class)->name('about');
 Route::get('/operations', OperationsController::class)->name('operations');
-
 Route::get('/contact', [ContactController::class, 'show'])->name('contact');
-Route::post('/contact', [ContactController::class, 'submit'])
-    ->middleware('throttle:5,1')
-    ->name('contact.submit');

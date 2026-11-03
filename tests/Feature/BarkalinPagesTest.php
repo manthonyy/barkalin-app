@@ -2,7 +2,8 @@
 
 namespace Tests\Feature;
 
-use App\Models\ContactMessage;
+use App\Models\ClientPartner;
+use App\Models\CoalGrade;
 use App\Models\Facility;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -13,12 +14,16 @@ class BarkalinPagesTest extends TestCase
 
     public function test_home_page_returns_successful_response(): void
     {
+        $this->seed();
+
         $response = $this->get(route('home'));
         $response->assertStatus(200);
         $response->assertSee('CV Barkalin Artha Prima');
-        $response->assertSee('Batubara Tingkat Tinggi (High Rank)');
-        $response->assertSee('Kalimantan Selatan');
-        $response->assertSee('6.100');
+        $response->assertSee('High Grade');
+        $response->assertSee('Medium Grade');
+        $response->assertSee('Low Grade');
+        $response->assertSee('CJ CheilJedang');
+        $response->assertSee('Wings Surya');
         $response->assertDontSee('Bisnis Kami');
     }
 
@@ -40,41 +45,21 @@ class BarkalinPagesTest extends TestCase
 
     public function test_operations_page_displays_facilities_from_database(): void
     {
-        Facility::factory()->create([
-            'name' => 'Stockpile Osowilangon Utama',
-            'location' => 'Jl. Osowilangon No. 7, Surabaya',
-            'active' => true,
-        ]);
+        $this->seed();
 
         $response = $this->get(route('operations'));
         $response->assertStatus(200);
-        $response->assertSee('Stockpile Osowilangon Utama');
-        $response->assertSee('Jl. Osowilangon No. 7, Surabaya');
-        $response->assertDontSee('ALUR KERJA');
+        $response->assertSee('Mining');
+        $response->assertSee('Shipment');
+        $response->assertSee('Stockpile');
     }
 
-    public function test_contact_page_renders_and_submits_message_into_database(): void
+    public function test_contact_page_returns_successful_response(): void
     {
-        $this->get(route('contact'))->assertStatus(200);
-
-        $payload = [
-            'name' => 'Budi Santoso',
-            'email' => 'budi@perusahaan.com',
-            'phone' => '081234567890',
-            'company' => 'PT Energi Mandiri',
-            'subject' => 'Inquiry Pasokan Batubara 10.000 MT',
-            'message' => 'Mohon informasi ketersediaan pasokan batubara medium grade.',
-        ];
-
-        $response = $this->post(route('contact.submit'), $payload);
-
-        $response->assertRedirect(route('contact'));
-        $response->assertSessionHas('success');
-
-        $this->assertDatabaseHas('contact_messages', [
-            'email' => 'budi@perusahaan.com',
-            'company' => 'PT Energi Mandiri',
-            'subject' => 'Inquiry Pasokan Batubara 10.000 MT',
-        ]);
+        $response = $this->get(route('contact'));
+        $response->assertStatus(200);
+        $response->assertSee('Kantor Pusat');
+        $response->assertSee('Stockpile');
+        $response->assertSee(config('barkalin.email'));
     }
 }

@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('client_partners', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('category'); // high, medium, low
-            $table->string('calorie_range'); // e.g. GAR 5,800 - 6,500 kcal/kg
-            $table->text('description');
-            $table->text('specifications')->nullable();
+            $table->string('logo');
+            $table->string('industry')->nullable();
+            $table->integer('sort_order')->default(1);
             $table->boolean('active')->default(true);
             $table->timestamps();
         });
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('client_partners');
     }
 };
