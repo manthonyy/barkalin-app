@@ -1,6 +1,6 @@
 @php
     $links = [
-        'home' => 'Beranda', 'about' => 'Tentang Kami', 'business' => 'Bisnis Kami',
+        'home' => 'Beranda', 'about' => 'Tentang Kami',
         'operations' => 'Operasional', 'contact' => 'Kontak',
     ];
 @endphp
@@ -8,7 +8,7 @@
     <div class="container navbar__inner">
         <a href="{{ route('home') }}" class="brand" aria-label="{{ config('barkalin.name') }} – Beranda">
             <img class="brand__logo" src="{{ asset('images/logobarkalin.png') }}" alt="">
-            <span class="brand__text">BARKALIN<small>Artha Prima</small></span>
+            <span class="brand__text">BARKALIN<small>ARTHA PRIMA</small></span>
         </a>
         <button class="navbar__toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
             <span class="sr-only">Buka menu navigasi</span><span class="bars" aria-hidden="true"></span>
@@ -19,7 +19,7 @@
                     <li><a href="{{ route($route) }}" @if (request()->routeIs($route)) aria-current="page" @endif>{{ $label }}</a></li>
                 @endforeach
             </ul>
-            <a href="{{ route('contact') }}" class="btn btn--accent btn--sm">Hubungi Kami</a>
         </nav>
+        <a href="{{ route('contact') }}" class="btn btn--accent btn--sm navbar__contact">Hubungi Kami <span aria-hidden="true">→</span></a>
     </div>
 </header>

@@ -2,78 +2,87 @@
 
 @section('title', 'Tentang Kami | ' . config('barkalin.name'))
 @section('description', 'Profil CV Barkalin Artha Prima, didirikan sejak 29 Maret 2011 di Surabaya sebagai penyedia batubara berkualitas dengan kepatuhan legalitas penuh.')
+@section('body_class', 'page-inner page-about')
 
 @section('content')
-<section class="page-banner">
-    <div class="container">
-        <span class="eyebrow">TENTANG PERUSAHAAN</span>
-        <h1>Mengenal CV Barkalin Artha Prima</h1>
+<section
+    class="inner-hero inner-hero--about"
+    style="--inner-hero-image: url('{{ asset('images/Barkalin-Banner-1i.jpg') }}')"
+>
+    <div class="container inner-hero__content" data-reveal>
+        <span class="eyebrow">TENTANG KAMI</span>
+        <h1>Mengenal Lebih Dekat Barkalin</h1>
+        <p>Bergerak di bidang pertambangan dan energi sejak {{ config('barkalin.founded') }}.</p>
+    </div>
+</section>
+
+<section class="inner-section inner-intro">
+    <div class="container inner-intro__grid">
+        <div data-reveal>
+            <span class="eyebrow">CV BARKALIN ARTHA PRIMA</span>
+            <h2>Mitra untuk pasokan energi yang bertanggung jawab.</h2>
+        </div>
+        <div class="inner-copy" data-reveal>
+            <p>
+                Didirikan pada tanggal <strong>{{ config('barkalin.founded') }}</strong> di Surabaya,
+                <strong>{{ config('barkalin.name') }}</strong> beroperasi di bidang pertambangan dan energi
+                dengan fokus utama pada perdagangan serta distribusi batubara.
+            </p>
+            <p>
+                Kami menyadari bahwa batubara merupakan salah satu sumber energi strategis nasional.
+                Karena itu, kami berkomitmen untuk mengelola pemanfaatannya secara bertanggung jawab dan profesional.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="inner-story">
+    <div class="inner-story__image" role="img" aria-label="Kendaraan bekerja di area pertambangan"></div>
+    <div class="inner-story__content" data-reveal>
+        <span class="eyebrow">SEJARAH & KOMITMEN</span>
+        <h2>Berpengalaman dalam perdagangan dan distribusi batu bara.</h2>
         <p>
-            Membangun kemitraan energi jangka panjang melalui integritas, kepatuhan legalitas, dan komitmen terhadap kualitas sejak 2011.
+            Sejak berdiri, Barkalin menjalankan kegiatan usaha di bidang pertambangan dan energi.
+            Kepatuhan legalitas, perhatian pada kualitas, dan kemitraan jangka panjang menjadi bagian
+            dari pendekatan perusahaan.
         </p>
+        <a href="{{ route('contact') }}" class="text-link">Hubungi kami <span aria-hidden="true">→</span></a>
     </div>
 </section>
 
-<section class="section">
-    <div class="container intro-grid">
-        <div>
-            <span class="eyebrow">SEJARAH & KOMITMEN</span>
-            <h2>Dedikasi untuk Pasokan Energi Andal</h2>
-        </div>
-
-        <div>
-            <p>
-                Didirikan pada tanggal <strong>{{ config('barkalin.founded') }}</strong> di Surabaya, <strong>{{ config('barkalin.name') }}</strong> beroperasi di bidang pertambangan dan energi dengan fokus utama pada perdagangan serta distribusi batubara berkualitas.
-            </p>
-            <p>
-                Kami menyadari bahwa batubara merupakan salah satu sumber energi strategis nasional. Oleh karena itu, kami berkomitmen untuk mengelola pemanfaatannya secara bertanggung jawab dan profesional, dengan memastikan setiap metrik pasokan berasal dari konsesi tambang resmi pemerintah yang memiliki perizinan lengkap (IUP, dokumen lingkungan UKL-UPL, dan sertifikasi mutu).
-            </p>
-        </div>
-    </div>
-</section>
-
-<section class="section section--dark">
+<section class="inner-section inner-values">
     <div class="container">
-        <span class="eyebrow">NILAI & PRINSIP KAMI</span>
-        <h2>Landasan Utama dalam Setiap Langkah</h2>
-
-        <div class="card-grid" style="margin-top: 32px;">
-            <article class="info-card">
-                <span class="card-number">01</span>
-                <h3>Legalitas & Kepatuhan</h3>
-                <p>Seluruh pasokan batubara diverifikasi legalitasnya dari tambang berizin resmi pemerintah dengan kepatuhan penuh terhadap regulasi lingkungan.</p>
+        <div class="inner-section__heading" data-reveal>
+            <span class="eyebrow">VISI & MISI</span>
+            <h2>Arah dan komitmen perusahaan.</h2>
+        </div>
+        <div class="inner-value-list">
+            <article data-reveal>
+                <span>01</span>
+                <div>
+                    <h3>Vision</h3>
+                    <p>Menjadi perusahaan pertambangan batubara terbaik di Indonesia yang memfokuskan diri pada laju pertumbuhan dengan membangun kompetensi melalui pengembangan karyawan, kinerja keuangan yang kuat, dan keuntungan yang solid untuk laju perputaran ekonomi perusahaan kami.</p>
+                </div>
             </article>
-
-            <article class="info-card">
-                <span class="card-number">02</span>
-                <h3>Jaminan Kualitas (QC)</h3>
-                <p>Pemeriksaan ketat terhadap kalori (GAR), total moisture, dan ash content melalui uji laboratorium independen terakreditasi.</p>
-            </article>
-
-            <article class="info-card">
-                <span class="card-number">03</span>
-                <h3>Keandalan Distribusi</h3>
-                <p>Dukungan fasilitas stockpile berkapasitas besar di Osowilangon dan armada laut tongkang (barge) memastikan kontinuitas pasokan klien tanpa henti.</p>
+            <article data-reveal>
+                <span>02</span>
+                <div>
+                    <h3>Mission</h3>
+                    <p>Memberikan kualitas produk dan pengiriman terbaik terhadap pelanggan kami dengan mempertahankan kemampuan Manajemen Lingkungan dan Kemampuan Memperbaiki Lingkungan. Perusahaan bertanggung jawab dalam sosial kemasyarakatan dan beroperasi dengan bimbingan Analisis Dampak Lingkungan.</p>
+                    <p>Sebagai perusahaan pertambangan yang profesional, kami sangat sadar bahwa dalam beroperasi pentingnya pendekatan ramah lingkungan dan amannya lokasi untuk para tenaga ahli dalam mengelola tambang dapat menjaga kelangsungan usaha dan perusahaan dalam jangka panjang.</p>
+                </div>
             </article>
         </div>
     </div>
 </section>
 
-<section class="section">
-    <div class="container intro-grid">
+<section class="inner-cta" style="--inner-cta-image: url('{{ asset('images/negosiasi.jpg') }}')">
+    <div class="container inner-cta__content" data-reveal>
         <div>
-            <span class="eyebrow">JARINGAN & LOKASI</span>
-            <h2>Operasional Berbasis di Surabaya</h2>
+            <span class="eyebrow">KEMITRAAN</span>
+            <h2>Mari bangun kerja sama bersama kami.</h2>
         </div>
-        <div>
-            <p>
-                Surabaya sebagai hub maritim dan industri di Jawa Timur menjadi titik pusat logistik kami. Dengan kantor pusat di <strong>{{ config('barkalin.office_address') }}</strong> dan fasilitas stockpile di <strong>{{ config('barkalin.stockpile_address') }}</strong>, kami memiliki akses strategis ke jalur darat dan pelabuhan laut utama.
-            </p>
-            <div style="margin-top: 24px;">
-                <a href="{{ route('business') }}" class="btn btn--gold" style="margin-right: 12px;">Lihat Katalog Produk</a>
-                <a href="{{ route('contact') }}" class="btn btn--outline">Hubungi Kami</a>
-            </div>
-        </div>
+        <a href="{{ route('contact') }}" class="btn btn--accent">Hubungi Kami <span aria-hidden="true">→</span></a>
     </div>
 </section>
 @endsection

@@ -2,64 +2,76 @@
 
 @section('title', 'Hubungi Kami | ' . config('barkalin.name'))
 @section('description', 'Hubungi CV Barkalin Artha Prima untuk penawaran batubara, pasokan industri, dan informasi operasional di Surabaya.')
+@section('body_class', 'page-inner page-contact')
 
 @section('content')
-<section class="page-banner">
-    <div class="container">
+<section class="contact-hero">
+    <div class="container contact-hero__content" data-reveal>
         <span class="eyebrow">HUBUNGI KAMI</span>
-        <h1>Mari Mulai Kerja Sama</h1>
-        <p>
-            Sampaikan pertanyaan, permintaan spesifikasi, atau kebutuhan pasokan batubara industri Anda kepada tim kami.
-        </p>
+        <h1>Mari Mulai Percakapan.</h1>
+        <p>Sampaikan pertanyaan atau kebutuhan Anda. Tim Barkalin siap membantu.</p>
     </div>
 </section>
 
-<section class="section">
+<section class="inner-section contact-main">
     <div class="container contact-grid">
-        <div>
+        <aside class="contact-information" data-reveal>
             <span class="eyebrow">INFORMASI KONTAK</span>
-            <h2>Kami siap melayani kebutuhan Anda.</h2>
-            <p>
-                Silakan isi formulir atau hubungi kantor perwakilan kami secara langsung melalui detail kontak di bawah ini.
-            </p>
+            <h2>Terhubung dengan Barkalin.</h2>
+            <p>Silakan hubungi kami melalui informasi berikut atau kirim pesan menggunakan formulir.</p>
 
-            <div style="margin-top: 32px; display: flex; flex-direction: column; gap: 20px;">
-                <div>
-                    <h3 style="font-size: 1.05rem; margin-bottom: 4px; color: var(--color-gold);">Kantor Pusat</h3>
-                    <p style="margin: 0;">{{ config('barkalin.office_address') }}</p>
-                </div>
-
-                <div>
-                    <h3 style="font-size: 1.05rem; margin-bottom: 4px; color: var(--color-gold);">Fasilitas Stockpile</h3>
-                    <p style="margin: 0;">{{ config('barkalin.stockpile_address') }}</p>
-                </div>
-
-                <div>
-                    <h3 style="font-size: 1.05rem; margin-bottom: 4px; color: var(--color-gold);">Telepon & Fax</h3>
-                    <p style="margin: 0;">
-                        Telp: <a href="tel:{{ config('barkalin.phone_tel') }}" style="text-decoration: underline;">{{ config('barkalin.phone') }}</a><br>
-                        Fax: {{ config('barkalin.fax') }}
-                    </p>
-                </div>
-
-                <div>
-                    <h3 style="font-size: 1.05rem; margin-bottom: 4px; color: var(--color-gold);">Email Resmi</h3>
-                    <p style="margin: 0;">
-                        <a href="mailto:{{ config('barkalin.email') }}" style="text-decoration: underline;">{{ config('barkalin.email') }}</a>
-                    </p>
-                </div>
+            <div class="contact-information__items">
+                @if (config('barkalin.office_address'))
+                    <section>
+                        <span class="contact-information__index">01</span>
+                        <div>
+                            <h3>Kantor Pusat</h3>
+                            <address>{{ config('barkalin.office_address') }}</address>
+                        </div>
+                    </section>
+                @endif
+                @if (config('barkalin.stockpile_address'))
+                    <section>
+                        <span class="contact-information__index">02</span>
+                        <div>
+                            <h3>Stockpile</h3>
+                            <address>{{ config('barkalin.stockpile_address') }}</address>
+                        </div>
+                    </section>
+                @endif
+                @if (config('barkalin.phone') && config('barkalin.phone_tel'))
+                    <section>
+                        <span class="contact-information__index">03</span>
+                        <div>
+                            <h3>Telepon</h3>
+                            <a href="tel:{{ config('barkalin.phone_tel') }}">{{ config('barkalin.phone') }}</a>
+                        </div>
+                    </section>
+                @endif
+                @if (config('barkalin.email'))
+                    <section>
+                        <span class="contact-information__index">04</span>
+                        <div>
+                            <h3>Email</h3>
+                            <a href="mailto:{{ config('barkalin.email') }}">{{ config('barkalin.email') }}</a>
+                        </div>
+                    </section>
+                @endif
             </div>
-        </div>
+        </aside>
 
-        <div>
+        <div class="contact-form-panel" data-reveal>
+            <div class="contact-form-panel__heading">
+                <span class="eyebrow">KIRIM PESAN</span>
+                <h2>Ceritakan kebutuhan Anda.</h2>
+            </div>
+
             @if (session('success'))
-                <div class="notice notice--success" style="padding: 16px; margin-bottom: 24px; background: #e6f4ea; border-left: 4px solid #137333; color: #137333; border-radius: 4px;">
-                    {{ session('success') }}
-                </div>
+                <div class="notice notice--success" role="status">{{ session('success') }}</div>
             @endif
 
             @if ($errors->any())
-                <div class="notice notice--error" style="padding: 16px; margin-bottom: 24px; background: #fce8e6; border-left: 4px solid #c5221f; color: #c5221f; border-radius: 4px;">
+                <div class="notice notice--error" role="alert">
                     Mohon periksa kembali data yang kamu masukkan.
                 </div>
             @endif
@@ -67,41 +79,44 @@
             <form action="{{ route('contact.submit') }}" method="POST" class="contact-form">
                 @csrf
 
-                <label for="name">Nama lengkap *</label>
-                <input id="name" name="name" type="text"
-                    value="{{ old('name') }}" required maxlength="100">
-                @error('name')
-                    <small style="color: #c5221f;">{{ $message }}</small>
-                @enderror
+                <div class="contact-form__row">
+                    <div class="contact-form__field">
+                        <label for="name">Nama lengkap *</label>
+                        <input id="name" name="name" type="text" value="{{ old('name') }}" required maxlength="100" autocomplete="name">
+                        @error('name')<small>{{ $message }}</small>@enderror
+                    </div>
+                    <div class="contact-form__field">
+                        <label for="email">Email *</label>
+                        <input id="email" name="email" type="email" value="{{ old('email') }}" required maxlength="150" autocomplete="email">
+                        @error('email')<small>{{ $message }}</small>@enderror
+                    </div>
+                </div>
 
-                <label for="email">Email *</label>
-                <input id="email" name="email" type="email"
-                    value="{{ old('email') }}" required maxlength="150">
-                @error('email')
-                    <small style="color: #c5221f;">{{ $message }}</small>
-                @enderror
+                <div class="contact-form__row">
+                    <div class="contact-form__field">
+                        <label for="phone">Nomor telepon</label>
+                        <input id="phone" name="phone" type="text" value="{{ old('phone') }}" maxlength="30" placeholder="Contoh: 08123456789" autocomplete="tel">
+                    </div>
+                    <div class="contact-form__field">
+                        <label for="company">Nama perusahaan</label>
+                        <input id="company" name="company" type="text" value="{{ old('company') }}" maxlength="150" placeholder="Nama perusahaan" autocomplete="organization">
+                    </div>
+                </div>
 
-                <label for="phone">Nomor telepon</label>
-                <input id="phone" name="phone" type="text"
-                    value="{{ old('phone') }}" maxlength="30" placeholder="Contoh: 08123456789">
+                <div class="contact-form__field">
+                    <label for="subject">Subjek *</label>
+                    <input id="subject" name="subject" type="text" value="{{ old('subject') }}" required maxlength="150" placeholder="Subjek pesan">
+                    @error('subject')<small>{{ $message }}</small>@enderror
+                </div>
 
-                <label for="company">Nama perusahaan</label>
-                <input id="company" name="company" type="text"
-                    value="{{ old('company') }}" maxlength="150" placeholder="Contoh: PT Industri Makmur">
+                <div class="contact-form__field">
+                    <label for="message">Pesan / Rincian Kebutuhan *</label>
+                    <textarea id="message" name="message" rows="5" required maxlength="5000" placeholder="Jelaskan kebutuhan Anda...">{{ old('message') }}</textarea>
+                    @error('message')<small>{{ $message }}</small>@enderror
+                </div>
 
-                <label for="subject">Subjek *</label>
-                <input id="subject" name="subject" type="text"
-                    value="{{ old('subject') }}" required maxlength="150" placeholder="Contoh: Permintaan Penawaran Batubara">
-
-                <label for="message">Pesan / Rincian Kebutuhan *</label>
-                <textarea id="message" name="message" rows="5"
-                    required maxlength="5000" placeholder="Jelaskan kebutuhan volume (MT), spesifikasi kalori (GAR), atau jadwal pengiriman..."></textarea>
-                @error('message')
-                    <small style="color: #c5221f;">{{ $message }}</small>
-                @enderror
-
-                <button type="submit" class="btn btn--gold">
-                    Kirim Pesan
+                <button type="submit" class="btn btn--accent">
+                    Kirim Pesan <span aria-hidden="true">→</span>
                 </button>
             </form>
         </div>

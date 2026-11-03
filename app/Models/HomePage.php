@@ -10,20 +10,35 @@ class HomePage
             [
                 'title' => 'High Grade',
                 'category' => 'COAL GRADES',
-                'image' => 'highgrade.jpg',
-                'description' => 'High Grade merupakan kategori batu bara dengan nilai kalor relatif tinggi yang dapat digunakan untuk berbagai kebutuhan industri dan pembangkit energi sesuai spesifikasinya. Karakteristik batu bara pada kategori ini perlu dinilai berdasarkan hasil pengujian, termasuk nilai kalor, kadar air, abu, sulfur, serta parameter kualitas lainnya.',
+                'image' => 'High-Grade-Update-1024x446.jpg',
+                'details' => [
+                    'subtitle' => 'Batubara Tingkat Tinggi (High Rank)',
+                    'source' => 'Kalimantan Selatan',
+                    'description' => 'Golongan ini ditandai dengan kandungan karbon tinggi, nilai kalori tinggi, kandungan air sedikit, kandungan abu sedikit, dan kandungan sulfur sedikit dengan membentuk bongkah-bongkah prismatik. Berlapis dan tidak mengeluarkan gas dan air bila dikeringkan. Endapan ini dapat digunakan antara lain untuk kepentingan transportasi dan industri.',
+                    'calorific_value' => '6.100–6.300 up kal',
+                ],
             ],
             [
                 'title' => 'Medium Grade',
                 'category' => 'COAL GRADES',
-                'image' => 'mediumgrade.jpg',
-                'description' => 'Medium Grade merupakan kategori batu bara dengan karakteristik kualitas yang berada di tingkat menengah. Pemanfaatannya dapat disesuaikan dengan kebutuhan operasional industri dan spesifikasi teknis yang dipersyaratkan oleh pembeli. Pemilihan batu bara tetap perlu mempertimbangkan hasil analisis kualitas dan kesesuaian penggunaannya.',
+                'image' => 'Banner-Update-medium-gradei-420x183.jpg',
+                'details' => [
+                    'subtitle' => 'Batubara Tingkat Menengah (Moderate Rank)',
+                    'source' => 'Kalimantan Selatan',
+                    'description' => 'Golongan ini ditandai dengan struktur kurang kompak, kandungan karbon tinggi, nilai kalori tinggi, kandungan air sedikit, kandungan abu sedikit, dan kandungan sulfur sedikit serta sudah mengandung lilin. Endapan ini dapat digunakan untuk pemanfaatan pembakaran yang cukup dengan temperatur yang tidak terlalu tinggi.',
+                    'calorific_value' => '5.600–6.000 kal',
+                ],
             ],
             [
                 'title' => 'Low Grade',
                 'category' => 'COAL GRADES',
-                'image' => 'lowgrade.jpg',
-                'description' => 'Low Grade merupakan kategori batu bara dengan nilai kalor relatif lebih rendah dibandingkan kategori dengan kualitas lebih tinggi. Batu bara ini dapat dimanfaatkan untuk kebutuhan tertentu sesuai karakteristiknya, teknologi yang digunakan, dan persyaratan pembeli. Pengujian kualitas tetap diperlukan untuk menentukan kesesuaian pemanfaatannya.',
+                'image' => 'LowGrade-update-1024x446.jpg',
+                'details' => [
+                    'subtitle' => 'Batubara Tingkat Rendah (Low Rank)',
+                    'source' => 'Kalimantan Selatan',
+                    'description' => 'Golongan ini sudah memperlihatkan proses selanjutnya berupa struktur kekar dan gejala pelapisan. Apabila dikeringkan, gas dan airnya akan keluar. Endapan ini bisa dimanfaatkan secara terbatas untuk kepentingan yang bersifat sederhana, karena panas yang dikeluarkan sangat rendah. Lignite ditandai dengan kondisi fisik berwarna hitam dan sangat rapuh, nilai kalori rendah, kandungan air tinggi, kandungan abu tinggi, dan kandungan sulfur tinggi.',
+                    'calorific_value' => '5.300–5.600 kal',
+                ],
             ],
         ];
     }
@@ -34,7 +49,7 @@ class HomePage
             [
                 'number' => '01',
                 'title' => 'Mining',
-                'image' => 'mining.jpg',
+                'image' => 'barkalin-hero1.jpg',
                 'image_alt' => 'Alat berat dan aktivitas di area pertambangan batu bara',
                 'reverse' => false,
                 'paragraphs' => [
@@ -45,8 +60,8 @@ class HomePage
             [
                 'number' => '02',
                 'title' => 'Shipment',
-                'image' => 'shipment.jpg',
-                'image_alt' => 'Pengangkutan batu bara melalui jalur laut',
+                'image' => 'Tongkang-Update-1024x446.jpg',
+                'image_alt' => 'Tongkang bermuatan batu bara untuk pengiriman',
                 'reverse' => true,
                 'paragraphs' => [
                     'Untuk sarana pemasaran dan pendistribusiannya, batu bara memerlukan alat transportasi laut sebagai alat pengangkutannya. Dalam pengangkutan tertentu, tongkang digunakan untuk membawa material dan kapal tunda membantu menarik atau mendorong tongkang.',
@@ -56,8 +71,8 @@ class HomePage
             [
                 'number' => '03',
                 'title' => 'Stockpile',
-                'image' => 'coal.jpg',
-                'image_alt' => 'Tumpukan batu bara untuk persiapan penanganan dan distribusi',
+                'image' => 'Banner-Update-stocpile-1024x446.jpg',
+                'image_alt' => 'Area stockpile batu bara dengan alat berat',
                 'reverse' => false,
                 'paragraphs' => [
                     'Stockpile merupakan area yang digunakan untuk menumpuk dan menyimpan batu bara sebelum diproses lebih lanjut atau dikirim kepada pembeli. Pengelolaan stockpile yang baik membantu mendukung penanganan material dan persiapan distribusi.',

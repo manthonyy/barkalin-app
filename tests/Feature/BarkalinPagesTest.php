@@ -4,7 +4,6 @@ namespace Tests\Feature;
 
 use App\Models\ContactMessage;
 use App\Models\Facility;
-use App\Models\Product;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -17,6 +16,10 @@ class BarkalinPagesTest extends TestCase
         $response = $this->get(route('home'));
         $response->assertStatus(200);
         $response->assertSee('CV Barkalin Artha Prima');
+        $response->assertSee('Batubara Tingkat Tinggi (High Rank)');
+        $response->assertSee('Kalimantan Selatan');
+        $response->assertSee('6.100');
+        $response->assertDontSee('Bisnis Kami');
     }
 
     public function test_about_page_returns_successful_response(): void
@@ -25,20 +28,14 @@ class BarkalinPagesTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('29 Maret 2011');
         $response->assertSee('Jl. Veteran 9G');
+        $response->assertSee('Vision');
+        $response->assertSee('Mission');
+        $response->assertSee('Analisis Dampak Lingkungan');
     }
 
-    public function test_business_page_displays_products_from_database(): void
+    public function test_business_page_is_removed(): void
     {
-        Product::factory()->create([
-            'name' => 'High Grade Steam Coal',
-            'calorie_range' => 'GAR 6,200 kcal/kg',
-            'active' => true,
-        ]);
-
-        $response = $this->get(route('business'));
-        $response->assertStatus(200);
-        $response->assertSee('High Grade Steam Coal');
-        $response->assertSee('GAR 6,200 kcal/kg');
+        $this->get('/business')->assertNotFound();
     }
 
     public function test_operations_page_displays_facilities_from_database(): void
@@ -53,6 +50,7 @@ class BarkalinPagesTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('Stockpile Osowilangon Utama');
         $response->assertSee('Jl. Osowilangon No. 7, Surabaya');
+        $response->assertDontSee('ALUR KERJA');
     }
 
     public function test_contact_page_renders_and_submits_message_into_database(): void

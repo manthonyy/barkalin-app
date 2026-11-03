@@ -1,76 +1,79 @@
 @extends('layouts.app')
 
 @section('title', 'Operasional & Fasilitas | ' . config('barkalin.name'))
-@section('description', 'Fasilitas stockpile di Osowilangon Surabaya, armada maritim tongkang/barge, dan jetty pelabuhan CV Barkalin Artha Prima.')
+@section('description', 'Informasi operasional dan fasilitas CV Barkalin Artha Prima.')
+@section('body_class', 'page-inner page-operations')
 
 @section('content')
-<section class="page-banner">
-    <div class="container">
-        <span class="eyebrow">OPERASIONAL & LOGISTIK</span>
-        <h1>Fasilitas & Manajemen Mutu</h1>
-        <p>
-            Mendukung kelancaran distribusi batubara melalui integrasi fasilitas stockpile, armada maritim, dan kontrol mutu berstandar tinggi.
+<section
+    class="inner-hero inner-hero--operations"
+    style="--inner-hero-image: url('{{ asset('images/Jetty-update-1024x446.jpg') }}')"
+>
+    <div class="container inner-hero__content" data-reveal>
+        <span class="eyebrow">OPERASIONAL</span>
+        <h1>Menghubungkan Setiap Tahap Operasional</h1>
+        <p>Koordinasi penanganan batu bara dari sumber, penyimpanan, hingga proses distribusi.</p>
+    </div>
+</section>
+
+<section class="inner-section operations-overview">
+    <div class="container operations-overview__grid">
+        <div data-reveal>
+            <span class="eyebrow">PENDEKATAN OPERASIONAL</span>
+            <h2>Rantai pasok yang tertata, dari awal hingga tujuan.</h2>
+        </div>
+        <p data-reveal>
+            Keandalan pasokan energi bergantung pada koordinasi logistik dan penanganan material.
+            Barkalin mendukung rantai pasok batu bara melalui kegiatan pertambangan, shipment, dan stockpile.
         </p>
     </div>
 </section>
 
-<section class="section">
+<section class="operations-activities">
     <div class="container">
-        <div class="intro-grid" style="margin-bottom: 48px;">
-            <div>
-                <span class="eyebrow">JARINGAN FASILITAS</span>
-                <h2>Infrastruktur Pendukung Distribusi</h2>
-            </div>
-            <div>
-                <p>
-                    Keandalan pasokan energi sangat bergantung pada kekuatan logistik. CV Barkalin Artha Prima mengelola rantai pasok batubara dari titik muat pelabuhan hingga fasilitas penimbunan strategis di Surabaya.
-                </p>
-            </div>
-        </div>
-
-        <div class="card-grid">
-            @forelse ($facilities as $facility)
-                <article class="info-card">
-                    <span class="card-number">{{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}</span>
-                    <span style="display: inline-block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-gold); font-weight: 700; margin-bottom: 6px;">
-                        {{ $facility->type }}
-                    </span>
-                    <h3>{{ $facility->name }}</h3>
-                    <p style="font-size: 0.875rem; color: var(--color-muted); margin-bottom: 12px;">
-                        📍 {{ $facility->location }}
-                    </p>
-                    <p>{{ $facility->description }}</p>
-                </article>
-            @empty
-                <div class="info-card">
-                    <p>Belum ada fasilitas yang terdaftar saat ini.</p>
+        @foreach ($activities as $activity)
+            @php
+                $activityImage = $activity['image'];
+            @endphp
+            <article class="operations-activity{{ $activity['reverse'] ? ' operations-activity--reverse' : '' }}" data-reveal>
+                <div class="operations-activity__image">
+                    <img src="{{ asset('images/' . $activityImage) }}" alt="{{ $activity['image_alt'] }}" loading="lazy">
+                    <span>{{ $activity['number'] }}</span>
                 </div>
-            @endforelse
-        </div>
+                <div class="operations-activity__content">
+                    <span class="eyebrow">TAHAP {{ $activity['number'] }}</span>
+                    <h2>{{ $activity['title'] }}</h2>
+                    @foreach ($activity['paragraphs'] as $paragraph)
+                        <p>{{ $paragraph }}</p>
+                    @endforeach
+                </div>
+            </article>
+        @endforeach
     </div>
 </section>
 
-<section class="section section--dark">
-    <div class="container">
-        <div class="intro-grid" style="margin-bottom: 40px;">
-            <div>
-                <span class="eyebrow">ALUR KERJA OPERASIONAL</span>
-                <h2>Standar Pengendalian Mutu & Pengiriman</h2>
+@if ($facilities->isNotEmpty())
+    <section class="inner-section operations-facilities">
+        <div class="container">
+            <div class="inner-section__heading" data-reveal>
+                <span class="eyebrow">FASILITAS</span>
+                <h2>Lokasi operasional yang terdaftar.</h2>
             </div>
-            <div>
-                <p>
-                    Setiap tahapan penanganan batubara melewati proses verifikasi ketat demi menjaga spesifikasi kalori yang dijanjikan kepada pembeli.
-                </p>
+            <div class="operations-facility-list">
+                @foreach ($facilities as $facility)
+                    <article data-reveal>
+                        <span>{{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}</span>
+                        <div>
+                            <small>{{ $facility->type }}</small>
+                            <h3>{{ $facility->name }}</h3>
+                            <p>{{ $facility->location }}</p>
+                            <p>{{ $facility->description }}</p>
+                        </div>
+                    </article>
+                @endforeach
             </div>
         </div>
+    </section>
+@endif
 
-        @include('partials.process')
-
-        <div style="margin-top: 48px; text-align: center;">
-            <a href="{{ route('contact') }}" class="btn btn--gold">
-                Hubungi Tim Operasional Kami
-            </a>
-        </div>
-    </div>
-</section>
 @endsection
