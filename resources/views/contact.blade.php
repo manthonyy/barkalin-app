@@ -75,7 +75,7 @@
             <p>
                 Untuk permohonan spesifikasi batubara, pengujian mutu kalori, atau penawaran pasokan industri berskala besar, silakan hubungi perwakilan kami secara langsung melalui saluran komunikasi resmi di bawah ini.
             </p>
-
+            
             <div style="margin-top: 32px; display: flex; flex-direction: column; gap: 16px;">
                 <a href="mailto:{{ config('barkalin.email') }}" class="btn btn--accent" style="justify-content: center;">
                     Kirim Email ke {{ config('barkalin.email') }} <span aria-hidden="true">→</span>

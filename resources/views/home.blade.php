@@ -57,7 +57,6 @@
                 alt="Truk tambang bekerja di area pertambangan"
                 loading="eager"
             >
-            <figcaption><span>01</span> Mendukung rantai pasok energi Indonesia</figcaption>
         </figure>
     </div>
 </section>
